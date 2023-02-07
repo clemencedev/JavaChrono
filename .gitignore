@@ -1,0 +1,6 @@
+# Ignore the /bin folder
+/bin/*
+
+# Ignore the compiler files
+compiler_files.txt
+.DS_Store
