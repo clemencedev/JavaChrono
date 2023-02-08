@@ -10,7 +10,13 @@ package clemencedev.javachrono.window;
 import javax.swing.JPanel;
 
 public class Graphics extends JPanel {
+
     public Graphics() {
+
+    }
+
+    // Resize all of the items
+    public void resizeGraphicsItems(int windowWidth, int windowHeight) {
 
     }
 }

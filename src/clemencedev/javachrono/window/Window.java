@@ -6,6 +6,9 @@
 
 package clemencedev.javachrono.window;
 
+// Import the events for the resize listener
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 // Import the swing libraries
 import javax.swing.JFrame;
 
@@ -21,14 +24,30 @@ public class Window {
      * @param title
      */
     public static void createWindow(int height, int width, String title) {
+        // Create the frame
         jf = new JFrame(title);
-        Graphics g = new Graphics();    // Import the graphics class
+
+        // Import and implement the graphics class
+        Graphics g = new Graphics();
         jf.setContentPane(g);
         jf.pack();
+
+        // Set the frame parameters
         jf.setSize(height, width);
         jf.setResizable(true);
         jf.setLocationRelativeTo(null);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setVisible(true);
+
+        // Size all the graphics items
+        g.resizeGraphicsItems(height, width);
+
+        // Add a resize listener
+        jf.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent event) {
+                g.resizeGraphicsItems(jf.getWidth(), jf.getHeight());
+            }
+        });
     }
 }
