@@ -12,6 +12,6 @@ import clemencedev.javachrono.window.Window;
 public class Main {
     public static void main(String[] args) {
         // Create the program window
-        Window.createWindow(610, 300, "Java Chrono");
+        Window.createWindow(610, 260, "Java Chrono");
     }
 }
