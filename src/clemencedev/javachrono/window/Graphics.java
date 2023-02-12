@@ -16,10 +16,10 @@ import javax.swing.JPanel;
 public class Graphics extends JPanel {
 
     // GUI elements
-    public JLabel chronoLabel;
-    public JLabel chronoMillisLabel;
-    public JButton resetButton;
-    public JButton startstopButton;
+    public static JLabel chronoLabel;
+    public static JLabel chronoMillisLabel;
+    public static JButton resetButton;
+    public static JButton startstopButton;
 
     public Graphics() {
         // Label managing the hours, minutes and seconds
