@@ -43,4 +43,8 @@ find . -name "*.java" | xargs rm
 echo " * Finished cleaning!"
 
 # The compilation is finished, inform the user
-echo " * The project is compiled and ready to be used!"
+echo " * Finished compiling"
+
+# Execute the program
+echo " * Executing the program!"
+java -cp $SCRIPT_DIR/bin clemencedev.javachrono.main.Main
