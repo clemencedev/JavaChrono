@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+// Import the required libraries for the timer
+import clemencedev.javachrono.chrono.Chrono;
+import java.util.Timer;
 
 public class Graphics extends JPanel {
 
@@ -22,6 +25,14 @@ public class Graphics extends JPanel {
     public static JLabel chronoMillisLabel;
     public static JButton resetButton;
     public static JButton startstopButton;
+    // Chrono variables
+    private Timer timer;
+    private boolean isTimerRunning = false;
+    // Old time variables
+    private int oldHours = 0;
+    private int oldMinutes = 0;
+    private int oldSeconds = 0;
+    private int oldMilliseconds = 0;
 
     public Graphics() {
         // Label managing the hours, minutes and seconds
@@ -53,7 +64,16 @@ public class Graphics extends JPanel {
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                
+                // Reset the variables
+                oldHours = 0;
+                oldMinutes = 0;
+                oldSeconds = 0;
+                oldMilliseconds = 0;
+                // Reset all the values showed on screen
+                chronoLabel.setText("00:00:00");
+                chronoMillisLabel.setText("00");
+                // Disable the button
+                resetButton.setEnabled(false);
             }
         });
 
@@ -61,7 +81,29 @@ public class Graphics extends JPanel {
         startstopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-
+                // Check if the timer is running
+                if(isTimerRunning) {
+                    // Get the old values
+                    oldHours = Chrono.hours;
+                    oldMinutes = Chrono.minutes;
+                    oldSeconds = Chrono.seconds;
+                    oldMilliseconds = Chrono.milliseconds;
+                    // Stop the chrono
+                    timer.cancel();
+                    isTimerRunning = false;
+                    // Modify the buttons status
+                    startstopButton.setText("Start");
+                    resetButton.setEnabled(true);
+                } else {
+                    // Create the timer
+                    timer = new Timer();
+                    // Start the chrono
+                    timer.scheduleAtFixedRate(new Chrono(oldHours, oldMinutes, oldSeconds, oldMilliseconds), 0, 10);
+                    isTimerRunning = true;
+                    // Modify the buttons status
+                    startstopButton.setText("Stop");
+                    resetButton.setEnabled(false);
+                }
             }
         });
 
