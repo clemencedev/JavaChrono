@@ -123,9 +123,7 @@ public class Chrono extends TimerTask {
             hasSecondsChanged = false;
 
             // Update the label only if there was a modification
-            System.out.println(stringBuilder.toString());
             Graphics.chronoLabel.setText(stringBuilder.toString());
-            System.out.println(stringBuilder.toString());
         }
     }
 }
