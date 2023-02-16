@@ -9,6 +9,8 @@ package clemencedev.javachrono.window;
 // Import the required swing and awt libraries
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,6 +47,23 @@ public class Graphics extends JPanel {
         startstopButton.setEnabled(true);
         startstopButton.setFont(new Font("Arial", Font.PLAIN, 32));
         startstopButton.setBounds(350, 150, 205, 60);
+
+        // Button action listener
+        // Reset button
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+            }
+        });
+
+        // Start/stop button
+        startstopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+
+            }
+        });
 
         // Adding the elements to the frame
         this.setLayout(null);
