@@ -14,15 +14,23 @@ import java.util.TimerTask;
 public class Chrono extends TimerTask {
 
     // Variables for the chrono
-    public int hours = 0;
-    public int minutes = 0;
-    public int seconds = 0;
-    public int milliseconds = 0;
+    public static int hours;
+    public static int minutes;
+    public static int seconds;
+    public static int milliseconds;
 
     // Variables for the labels
     private boolean hasSecondsChanged = false;
     private boolean hasMinutesChanged = false;
     private boolean hasHoursChanged = false;
+
+    // Get the old time
+    public Chrono(int oldHours, int oldMinutes, int oldSeconds, int oldMilliseconds) {
+        hours = oldHours;
+        minutes = oldMinutes;
+        seconds = oldSeconds;
+        milliseconds = oldMilliseconds;
+    }
 
     @Override
     public void run() {
